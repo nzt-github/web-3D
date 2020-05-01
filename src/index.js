@@ -267,21 +267,19 @@ class Model {
     }
     adjustModelMaterial(mode) {
         // 手动调整模型材质特性
-        console.log(11111)
         VGame.Loader.traverseMat(mode, e => {
             if (e.map) {
                 e.map.encoding = VGame.THREE.LinearEncoding
-                console.log(e.map)
-                e.map.texture.magFilter = VGame.THREE.NearestFilter
-                e.map.texture.minFilter = VGame.THREE.NearestFilter
-                e.map.texture.anisotropy = 1024
+                e.map.magFilter = VGame.THREE.NearestFilter
+                e.map.minFilter = VGame.THREE.NearestFilter
+                e.map.anisotropy = 1024000
                 e.map.needsUpdate = true
             }
             if (e.emissiveMap) {
                 e.emissiveMap.encoding = VGame.THREE.LinearEncoding
-                e.emissiveMap.texture.magFilter = VGame.THREE.NearestFilter
-                e.emissiveMap.texture.minFilter = VGame.THREE.NearestFilter
-                e.emissiveMap.texture.anisotropy = 1024
+                e.emissiveMap.magFilter = VGame.THREE.NearestFilter
+                e.emissiveMap.minFilter = VGame.THREE.NearestFilter
+                e.emissiveMap.anisotropy = 1024000
                 e.emissiveMap.needsUpdate = true
             }
             if (e.name === "充电口 耳机孔") {
