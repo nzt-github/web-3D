@@ -1,22 +1,8 @@
-var path = require('path');
 module.exports = {
-    mode: "production",
-    entry: './code/index',
+    mode: 'development',
+    entry: ['babel-polyfill', './src/index'],
     output: {
-        filename: 'app.js',
-        path: path.resolve(__dirname, 'dist')
-    },
-    module: {
-        rules: [{
-            test: /\.js$/,
-            exclude: /node_modules/,
-            use: {
-                loader: 'babel-loader',
-                options: {
-                    presets: ['@babel/preset-env']
-                }
-            }
-        }]
+        filename: './dist/app.js'
     },
     watch: true
 };

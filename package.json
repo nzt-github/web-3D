@@ -4,7 +4,7 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "bd": "webpack webpack.config.js"
+        "bd": "webpack --config webpack.config.js"
     },
     "author": "",
     "license": "ISC",

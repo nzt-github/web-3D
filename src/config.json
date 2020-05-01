@@ -1,0 +1,52 @@
+{
+    "modelVar": [{
+            "name": "蓝色",
+            "modelUrl": "./model/blue.glb",
+            "envUrl": "./images/blue.hdr"
+        },
+        {
+            "name": "青色",
+            "modelUrl": "./model/green.glb",
+            "envUrl": "./images/green.hdr"
+        }
+
+    ],
+    "commonVar": {
+        "showModel": [{
+                "name": "144Hz竞速屏",
+                "rotatePos": { "x": -60, "y": 0, "z": -40 },
+                "modelPos": { "x": -0.25, "y": -0.08 },
+                "scale": 0.25,
+                "slogn": "每秒高达144帧的画面显示，体验更加细腻、流畅"
+            },
+            {
+                "name": "44W超快闪充",
+                "rotatePos": { "x": -90, "y": 0, "z": 0 },
+                "scale": 0.6,
+                "slogn": "30分钟即可为4500mAh （典型值）超大电池充入74%的电量"
+            },
+            {
+                "name": "4800万AI广角三摄",
+                "rotatePos": { "x": 0, "y": 190, "z": 0 },
+                "scale": 0.5,
+                "modelPos": { "x": 0.15, "y": -0.125 },
+                "slogn": "拍照多面手，生活全记录"
+            },
+            {
+                "name": "侧边指纹",
+                "rotatePos": { "x": -90, "y": 180, "z": -90 },
+                "scale": 0.6,
+                "slogn": "解锁更快、兼容性更好"
+            }
+        ],
+        "colorArray": [{
+            "colorName": "夜幕黑",
+            "backImgSrc": "./images/blue.png"
+        }, {
+            "colorName": "青空蓝",
+            "backImgSrc": "./images/green.png"
+        }],
+        "panoramicImg": "./images/paramic.jpg",
+        "scaleNumber": 1.2
+    }
+}

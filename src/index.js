@@ -3,7 +3,7 @@
  * (c) 2019-2020 
  */
 import modelConfig from './config.json'
-import VGame from './plugin/index.esm'
+import VGame from './plugin/index.esm.js'
 
 class Model {
     async init() {
@@ -213,7 +213,8 @@ class Model {
         model.gltf = modeMaterial
         model.loadingFlag = true
         model.scale = this.windowHeight / this.commonParam.scaleNumber / this.BoxLength
-        model.tween = new VGame.Tween(model) !this.modelPanoramic && model.tween.repeat({
+        model.tween = new VGame.Tween(model);
+        !this.modelPanoramic && model.tween.repeat({
             rotateY: 360,
             time: this.tweenTime
         })
@@ -257,7 +258,7 @@ class Model {
     async initBgMap() {
         if (!this.commonParam.panoramicImg) return
         let texture = new VGame.THREE.TextureLoader().load(this.commonParam.panoramicImg);
-        let sphereGeometry = new VGame.THREE.SphereGeometry(2000, 10, 10);
+        let sphereGeometry = new VGame.THREE.SphereGeometry(2000, 100, 100);
         sphereGeometry.scale(-1, 1, 1);
         let sphereMaterial = new VGame.THREE.MeshBasicMaterial({ map: texture });
         let sphere = new VGame.THREE.Mesh(sphereGeometry, sphereMaterial);
@@ -266,13 +267,21 @@ class Model {
     }
     adjustModelMaterial(mode) {
         // 手动调整模型材质特性
+        console.log(11111)
         VGame.Loader.traverseMat(mode, e => {
             if (e.map) {
                 e.map.encoding = VGame.THREE.LinearEncoding
+                console.log(e.map)
+                e.map.texture.magFilter = VGame.THREE.NearestFilter
+                e.map.texture.minFilter = VGame.THREE.NearestFilter
+                e.map.texture.anisotropy = 1024
                 e.map.needsUpdate = true
             }
             if (e.emissiveMap) {
                 e.emissiveMap.encoding = VGame.THREE.LinearEncoding
+                e.emissiveMap.texture.magFilter = VGame.THREE.NearestFilter
+                e.emissiveMap.texture.minFilter = VGame.THREE.NearestFilter
+                e.emissiveMap.texture.anisotropy = 1024
                 e.emissiveMap.needsUpdate = true
             }
             if (e.name === "充电口 耳机孔") {
@@ -337,7 +346,7 @@ class Model {
             this.stage.addChild(this.currentMode)
             this.stage.changeModel(this.currentMode)
             this.currentMode.tween.stop()
-            freeModeFlag && this.currentMode.tween.repeat({
+            freeModeFlag && !this.modelPanoramic && this.currentMode.tween.repeat({
                 rotateY: this.currentMode.rotateY + 360,
                 time: this.tweenTime
             })
